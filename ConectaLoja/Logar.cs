@@ -16,6 +16,8 @@ namespace ConectaLoja
         public Logar()
         {
             InitializeComponent();
+            txtSenha.Text = "*";
+            txtSenha.isPassword = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
