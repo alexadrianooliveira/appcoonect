@@ -41,20 +41,24 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Tamanho = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.configuracõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtCodLoja
             // 
             this.txtCodLoja.Enabled = false;
-            this.txtCodLoja.Location = new System.Drawing.Point(15, 35);
+            this.txtCodLoja.Location = new System.Drawing.Point(15, 55);
             this.txtCodLoja.Name = "txtCodLoja";
             this.txtCodLoja.Size = new System.Drawing.Size(287, 20);
             this.txtCodLoja.TabIndex = 0;
@@ -66,7 +70,7 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(15, 127);
+            this.button1.Location = new System.Drawing.Point(15, 147);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(287, 35);
             this.button1.TabIndex = 2;
@@ -77,7 +81,7 @@
             // fsd
             // 
             this.fsd.AutoSize = true;
-            this.fsd.Location = new System.Drawing.Point(12, 19);
+            this.fsd.Location = new System.Drawing.Point(12, 39);
             this.fsd.Name = "fsd";
             this.fsd.Size = new System.Drawing.Size(74, 13);
             this.fsd.TabIndex = 3;
@@ -86,7 +90,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 72);
+            this.label1.Location = new System.Drawing.Point(12, 92);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 4;
@@ -105,7 +109,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.AutoSize = true;
             this.groupBox2.Controls.Add(this.listResultado);
-            this.groupBox2.Location = new System.Drawing.Point(323, 19);
+            this.groupBox2.Location = new System.Drawing.Point(323, 39);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(904, 146);
             this.groupBox2.TabIndex = 38;
@@ -127,7 +131,7 @@
             this.btnDesligar.FlatAppearance.BorderSize = 0;
             this.btnDesligar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDesligar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDesligar.Location = new System.Drawing.Point(15, 127);
+            this.btnDesligar.Location = new System.Drawing.Point(15, 147);
             this.btnDesligar.Name = "btnDesligar";
             this.btnDesligar.Size = new System.Drawing.Size(287, 35);
             this.btnDesligar.TabIndex = 39;
@@ -141,7 +145,7 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblStatus.Location = new System.Drawing.Point(12, 85);
+            this.lblStatus.Location = new System.Drawing.Point(12, 105);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(93, 31);
             this.lblStatus.TabIndex = 40;
@@ -177,11 +181,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(892, 476);
             this.dataGridView1.TabIndex = 36;
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 2000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // Tamanho
             // 
             this.Tamanho.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -211,6 +210,36 @@
             this.Column3.HeaderText = "Total";
             this.Column3.Name = "Column3";
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 2000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.configuracõesToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1239, 24);
+            this.menuStrip1.TabIndex = 42;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // configuracõesToolStripMenuItem
+            // 
+            this.configuracõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sairToolStripMenuItem});
+            this.configuracõesToolStripMenuItem.Name = "configuracõesToolStripMenuItem";
+            this.configuracõesToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.configuracõesToolStripMenuItem.Text = "Configuracões";
+            // 
+            // sairToolStripMenuItem
+            // 
+            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,7 +254,9 @@
             this.Controls.Add(this.fsd);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtCodLoja);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "App Food Connect";
@@ -235,6 +266,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,6 +291,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem configuracõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
     }
 }
 

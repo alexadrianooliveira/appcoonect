@@ -262,7 +262,10 @@ namespace ConectaLoja
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            txtCodLoja.Text = Logar.codLoja.ToString();   
+            BLL.Security valida = new BLL.Security();
+            Models.Loja loja = valida.CarregaDadosSalvos();
+
+            txtCodLoja.Text = loja.MasterID.ToString();   
         }
 
         private void btnDesligar_Click(object sender, EventArgs e)
@@ -295,6 +298,15 @@ namespace ConectaLoja
         {
             Application.Exit();
         }
-      
+
+        private void sairToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            BLL.Security valida = new BLL.Security();
+            valida.ApagaDadosLoja();
+
+            Logar f = new Logar();
+            f.Show();
+            this.Visible = false;
+        }
     }
 }

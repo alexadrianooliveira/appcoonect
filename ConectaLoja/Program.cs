@@ -14,9 +14,29 @@ namespace ConectaLoja
         [STAThread]
         static void Main()
         {
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new Logar());
+            LogarLoja();
+        }
+
+        private static void LogarLoja()
+        {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Logar());
+
+            BLL.Security valida = new BLL.Security();
+            Models.Loja loja = valida.CarregaDadosSalvos();
+            int retorno = 0;
+            if (loja.Email != "")
+                retorno = valida.checkStore(loja.Email, loja.Senha);
+
+            if (retorno == 0)
+                Application.Run(new Logar());
+            else
+            {
+                Application.Run(new Form1());
+            }
         }
     }
 }

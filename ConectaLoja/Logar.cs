@@ -17,14 +17,11 @@ namespace ConectaLoja
         {
             InitializeComponent();
             txtSenha.Text = "*";
-            txtSenha.isPassword = true;
+            txtSenha.isPassword = true;           
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void LogarLoja(string user,string pass)
         {
-            string user = txtEmail.Text;
-            string pass = txtSenha.Text;
-
             BLL.Security valida = new BLL.Security();
             int retorno = valida.checkStore(user, pass);
 
@@ -37,6 +34,14 @@ namespace ConectaLoja
                 f.Show();
                 this.Visible = false;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string user = txtEmail.Text;
+            string pass = txtSenha.Text;
+
+            LogarLoja(user, pass);
         }
 
         private void label8_Click(object sender, EventArgs e)

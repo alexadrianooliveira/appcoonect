@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,12 +46,58 @@ namespace ConectaLoja.BLL
             else
             {
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
-                Models.Token obj = serializer.Deserialize<Models.Token>(token);
-                obj.DataExpira = DateTime.Now.AddSeconds(obj.expires_in);
-
+                Models.Token obj = serializer.Deserialize<Models.Token>(token);   
                 int masterID = Utils.Valida.LimpaString(obj.masterid);
+                obj.DataExpira = DateTime.Now.AddSeconds(obj.expires_in);
+                obj.masterid = masterID.ToString();
+
+                //Grava ou atualiza os dados no sqlite
+                GravaLoja(obj, usuario, senha);
+
+
                 return masterID;
             }
+        }
+
+        public Models.Loja CarregaDadosSalvos()
+        {
+            string strquery = "Select * FROM loja order by MasterID desc";
+            DataTable dt = Dados.ExecutaSQLDataTable(strquery);
+            Models.Loja loja = new Models.Loja();
+
+            if (dt.Rows.Count > 0)
+            {
+                loja.Email = dt.Rows[0]["Nome"].ToString();
+                loja.Senha = dt.Rows[0]["Senha"].ToString();
+                loja.MasterID = Convert.ToInt32(dt.Rows[0]["MasterID"]);
+            }
+            return loja;
+        }
+
+        public void ApagaDadosLoja()
+        {
+            string strquery = "Delete FROM loja";
+            Dados.ExecutaSQLNonQuery(strquery);
+        }
+
+
+        private void GravaLoja(Models.Token obj, string nome, string senha)
+        {
+            string strquery = "Select count(*) FROM loja where MasterID = " + obj.masterid;
+            bool tem = Convert.ToInt32(Dados.ExecutaSQLScalar(strquery)) > 0;
+
+            if (tem)
+                strquery = "UPDATE loja SET Nome=@nome,Senha=@senha,Token=@token,Expira=@expira WHERE MasterID=@masterID";
+            else
+                strquery = "INSERT INTO loja (Nome,Senha,MasterID,Token,Expira)Values(@nome,@senha,@masterID,@token,@expira)";
+
+            IDbDataParameter p1 = Dados.GetParameter("@nome", nome);
+            IDbDataParameter p2 = Dados.GetParameter("@senha", senha);
+            IDbDataParameter p3 = Dados.GetParameter("@masterID", obj.masterid);
+            IDbDataParameter p4 = Dados.GetParameter("@token", obj.access_token);
+            IDbDataParameter p5 = Dados.GetParameter("@expira", obj.DataExpira.ToString());
+
+            Dados.ExecutaSQLNonQuery(strquery, p1, p2, p3, p4, p5);
         }
     }
 }
